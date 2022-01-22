@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { ToDoList } from './components/ToDoList';
 
 const KEY= "todoApp.todos"
@@ -8,7 +8,16 @@ function App() {
     {id:1, task: "first task", completed:false}
   ])
 
-  const todoTaskRef= useRef();  
+  const todoTaskRef= useRef();
+
+  useEffect(()=>{
+    const storedTodos= JSON.parse(localStorage.getItem(KEY));
+    if (storedTodos) setTodos(storedTodos);
+  },[]);
+
+  useEffect(()=>{
+    localStorage.setItem(KEY,JSON.stringify(todos))
+  },[todos]);
 
   const handleTodoAdd = ()=> 
   {
