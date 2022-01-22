@@ -9,7 +9,8 @@ function App() {
 
   const todoTaskRef= useRef();
 
-  const handleTodoAdd= ()=>{
+  const handleTodoAdd = ()=> 
+  {
     const task = todoTaskRef.current.value;
     if(task==="")return;
     setTodos((prevTodos)=>{

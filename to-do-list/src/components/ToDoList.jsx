@@ -5,7 +5,7 @@ export function ToDoList({todos}) {
   return (  
       <ul>
         {todos.map((todoit)=>
-            <ToDoItem todo={todoit}/>
+            <ToDoItem key={tofoit.id} todo={todoit}/>
         )}
       </ul>
   );
