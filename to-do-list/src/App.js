@@ -1,13 +1,14 @@
 import React, {useState, useRef} from 'react';
 import { ToDoList } from './components/ToDoList';
 
+const KEY= "todoApp.todos"
 
 function App() {
   const [todos,setTodos]= useState([
     {id:1, task: "first task", completed:false}
   ])
 
-  const todoTaskRef= useRef();
+  const todoTaskRef= useRef();  
 
   const handleTodoAdd = ()=> 
   {
@@ -27,22 +28,21 @@ function App() {
     setTodos(newTodos);
   }
 
-  const dropItem = ()=> 
+  const handleClearAll = ()=> 
   {
-    if (isNaN(todoTaskRef.current.value)) return;
-    const idItem= todoTaskRef.current.value;
-    let newTodos=[...todos];
-    const indexOfItem=idItem-1
-    newTodos.splice(indexOfItem,1);
-    setTodos(newTodos);
+    const newTodos= todos.filter((e)=> !e.completed);
+    setTodos(newTodos); 
   }
 
   return (  
     <React.Fragment>
       <ToDoList todos={todos} toggleTodo={toggleTodo}/>
-      <input ref={todoTaskRef} type="text" placeholder='Add a new task or drop by id'/>
+      <input ref={todoTaskRef} type="text" placeholder='Add a new task'/>
       <button onClick={handleTodoAdd}>✅</button>
-      <button onClick={dropItem}>🗑</button>
+      <button onClick={handleClearAll}>🗑</button>
+      <div>
+        <p> You have {todos.filter((e)=> e.completed===false).length} tasks left to complete </p>
+      </div>
     </React.Fragment>
   );
 }
