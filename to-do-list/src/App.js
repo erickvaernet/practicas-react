@@ -20,10 +20,17 @@ function App() {
     todoTaskRef.current.value=null;
   }
 
+  const toggleTodo = (id)=> {
+    const newTodos=[...todos];
+    const todo= newTodos.find((e)=> e.id===id);
+    todo.completed= !todo.completed;
+    setTodos(newTodos);
+  }
+
   return (  
     <React.Fragment>
-      <ToDoList todos={todos} />
-      <input ref={todoTaskRef} type="text" placeholder='Add a new task'/>
+      <ToDoList todos={todos} toggleTodo={toggleTodo}/>
+      <input ref={todoTaskRef} type="text" placeholder='Add a new task or drop by id'/>
       <button onClick={handleTodoAdd}>✅</button>
       <button>🗑</button>
     </React.Fragment>
