@@ -13,6 +13,7 @@ function App() {
   useEffect(()=>{
     const storedTodos= JSON.parse(localStorage.getItem(KEY));
     if (storedTodos) setTodos(storedTodos);
+    document.addEventListener("keydown",(event)=>handleTodoAdd2(event))
   },[]);
 
   useEffect(()=>{
@@ -28,6 +29,10 @@ function App() {
     });
     
     todoTaskRef.current.value=null;
+  }
+
+  const handleTodoAdd2=(event)=>{
+    if (event.keyCode==13) handleTodoAdd();
   }
 
   const toggleTodo = (id)=> {
@@ -47,7 +52,7 @@ function App() {
     <React.Fragment>
       <ToDoList todos={todos} toggleTodo={toggleTodo}/>
       <input ref={todoTaskRef} type="text" placeholder='Add a new task'/>
-      <button onClick={handleTodoAdd}>✅</button>
+      <button onClick={handleTodoAdd} onKeyPress={handleTodoAdd2}>✅</button>
       <button onClick={handleClearAll}>🗑</button>
       <div>
         <p> You have {todos.filter((e)=> e.completed===false).length} tasks left to complete </p>
