@@ -24,8 +24,14 @@ function App() {
   {
     const task = todoTaskRef.current.value;
     if(task==="")return;
+    
     setTodos((prevTodos)=>{
-      return [...prevTodos, {id:prevTodos[(prevTodos.length-1)].id+1, task, completed:false}]
+      return [...prevTodos, 
+        {
+          id: prevTodos.length==0? 1:prevTodos[(prevTodos.length-1)].id+1,
+          task,
+          completed:false
+        }]
     });
     
     todoTaskRef.current.value=null;
