@@ -10,14 +10,13 @@ export function PokeCard({id}){
     useEffect(()=>{
         fetch(url)
         .then((res)=> res.json())
-        .then((data)=>{
-            console.log(data)
+        .then((data)=>{      
             const pokemonName=data.name;
-            const pokemonSprite=data.sprites.front_default;            
-            const pokemonAbilities= data.abilities.reduce( (prev,current) => prev.ability.name+"-"+current.ability.name);
+            const pokemonSprite=data.sprites.front_default;   
+            const pokemonAbilities= data.abilities.reduce( (prev,current) =>prev+current.ability.name+"-","");            
             setPokemon({name:pokemonName, abilities:pokemonAbilities, sprite:pokemonSprite});
         })
-    },[])
+    })
 
     
 
