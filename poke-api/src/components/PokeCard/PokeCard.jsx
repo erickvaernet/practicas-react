@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { PokeDesc } from "./PokeDesc/PokeDesc";
 
-
 export function PokeCard({id}){
 
     const [pokemon,setPokemon]=useState({name:null, abilities: null, sprite:null});
@@ -17,8 +16,7 @@ export function PokeCard({id}){
             //const pokemonAbilities= data.abilities.reduce( (prev,current) =>prev+current.ability.name+"-","")           
             const pokemonAbilities= data.abilities;
             setPokemon({name:pokemonName, abilities:pokemonAbilities, sprite:pokemonSprite});
-        })
-    })
+    })},[id])
 
     
 

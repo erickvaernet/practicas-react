@@ -10,8 +10,7 @@ function App(){
   const [id, setId]=useState(getRandomID())
   
   const handleID=()=>{
-    const newId= getRandomID();
-    console.log(newId)
+    const newId= getRandomID();  
     setId(newId)
   }
   
