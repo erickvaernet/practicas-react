@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { PokeDesc } from "./PokeDesc/PokeDesc";
+import "./styles.css"
 
 export function PokeCard({id}){
 
@@ -21,10 +22,10 @@ export function PokeCard({id}){
     
 
     return(
-        <div className="Marco">
-            <h2>{pokemon.name}</h2>
+        <div className="marco">
+            <h2 className="poke-name">{pokemon.name}</h2>
             <img src={pokemon.sprite} alt={pokemon.name} />        
-            <PokeDesc abilities={pokemon.abilities}/>
+            <PokeDesc className="marco-desc" abilities={pokemon.abilities}/>
         </div>        
     );
 }

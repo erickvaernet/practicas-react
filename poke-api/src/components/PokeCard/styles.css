@@ -1,0 +1,36 @@
+
+.marco{
+    border: 5px solid black;
+    max-width: 200px ;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 0;
+    min-height: 350px;
+}
+
+.poke-name{
+    color: gold;
+    background-color: black;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.marco-desc{
+    border: 2px solid black;
+    padding: 1px;
+    margin: 0;
+    min-height: 115px;
+}
+
+.marco-desc h3{
+    padding: 2px;
+    margin: 2px;
+    text-decoration: underline;
+}
+
+.marco-desc ul{
+    margin:10px;
+}
