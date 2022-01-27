@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { PokeDesc } from "./PokeDesc/PokeDesc";
 
 
 export function PokeCard({id}){
@@ -11,9 +12,10 @@ export function PokeCard({id}){
         fetch(url)
         .then((res)=> res.json())
         .then((data)=>{      
-            const pokemonName=data.name;
+            const pokemonName= data.name.charAt(0).toUpperCase() +  data.name.slice(1); 
             const pokemonSprite=data.sprites.front_default;   
-            const pokemonAbilities= data.abilities.reduce( (prev,current) =>prev+current.ability.name+"-","");            
+            //const pokemonAbilities= data.abilities.reduce( (prev,current) =>prev+current.ability.name+"-","")           
+            const pokemonAbilities= data.abilities;
             setPokemon({name:pokemonName, abilities:pokemonAbilities, sprite:pokemonSprite});
         })
     })
@@ -23,8 +25,8 @@ export function PokeCard({id}){
     return(
         <div className="Marco">
             <h2>{pokemon.name}</h2>
-            <img src={pokemon.sprite} alt={pokemon.name} />
-            <p>{pokemon.abilities}</p>
+            <img src={pokemon.sprite} alt={pokemon.name} />        
+            <PokeDesc abilities={pokemon.abilities}/>
         </div>        
     );
 }
